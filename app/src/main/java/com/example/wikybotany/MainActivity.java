@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,11 +22,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Spinner spinner = findViewById(R.id.Spcategories);
-        spinner.setOnItemSelectedListener(this);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categories_array, android.R.layout.simple_spinner_item);
+        Spinner spinner;
 
         Button BTsearch, BTshowAll, BTlocation;
+
+
+        spinner = findViewById(R.id.Spcategories);
+        spinner.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categories_array, android.R.layout.simple_spinner_item);
 
         BTsearch = findViewById(R.id.BTsrc);
         BTsearch.setOnClickListener(this);
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         BTlocation = findViewById(R.id.BTclothestLocation);
         BTlocation.setOnClickListener(this);
+
 
 
         spinner.setAdapter(adapter);
