@@ -7,12 +7,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.wikybotany.link_list.LineDisplay;
+import com.example.wikybotany.link_list.LineDisplayAdapter;
+
 import java.util.ArrayList;
 
+//מסך ב'
 public class PlantList_screen2 extends AppCompatActivity implements View.OnClickListener {
 
     ListView LVplants;
-    LineDisplay[] plantsList;
+    ArrayList<LineDisplay> plantsList;
+
     LineDisplayAdapter plantsListAdapter;
     int listCounter; //מספר האיברים ברשימה
     @Override
@@ -26,7 +31,7 @@ public class PlantList_screen2 extends AppCompatActivity implements View.OnClick
         BTback = findViewById(R.id.BTback);
         BTback.setOnClickListener(this);
 
-        plantsList = new LineDisplay[listCounter];
+        plantsList = new ArrayList<LineDisplay>();
         //כאן יהיה לולאה/ פעולה שתוסיף איברים למערך הנ"ל
 
         plantsListAdapter = new LineDisplayAdapter(this, 0, 0, plantsList);

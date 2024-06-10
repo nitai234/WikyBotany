@@ -1,4 +1,4 @@
-package com.example.wikybotany;
+package com.example.wikybotany.link_list;
 
 import android.graphics.Bitmap;
 

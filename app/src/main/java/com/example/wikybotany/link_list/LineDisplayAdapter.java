@@ -1,8 +1,7 @@
-package com.example.wikybotany;
+package com.example.wikybotany.link_list;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +12,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.List;
+import com.example.wikybotany.R;
+import com.example.wikybotany.link_list.LineDisplay;
 
+import java.util.ArrayList;
+
+//מייצר את הlist view
 public class LineDisplayAdapter extends ArrayAdapter<LineDisplay>
 {
     Context context;
-    LineDisplay[] object;
+    //LineDisplay[] lineDisplays;
+    ArrayList<LineDisplay> lineDisplayArry ;
 
-    public LineDisplayAdapter(@NonNull Context context, int resource, int textViewResourceId, @NonNull LineDisplay[] objects) {
+    public LineDisplayAdapter(@NonNull Context context, int resource, int textViewResourceId, @NonNull ArrayList<LineDisplay> objects) {
         super(context, resource, textViewResourceId, objects);
 
         this.context = context;
-        this.object = objects;
+        this.lineDisplayArry = objects;
 
     }
 
@@ -38,11 +42,14 @@ public class LineDisplayAdapter extends ArrayAdapter<LineDisplay>
         ImageView IMplantPic = view.findViewById(R.id.IMplantPic);
         TextView TVplantName = view.findViewById(R.id.TVplantName);
         TextView TVeditorName = view.findViewById(R.id.TVeditorName);
-        LineDisplay lineDisplay = object[position];
 
-        IMplantPic.setImageBitmap(lineDisplay.getPlantPic());
-        TVplantName.setText(lineDisplay.getPlantName());
-        TVeditorName.setText(lineDisplay.getEditorName());
+        //מצביע למיקום בarry list
+        LineDisplay temp = lineDisplayArry.get(position) ;
+
+        //קובע את הערכים של התיבה הנוכחית
+        IMplantPic.setImageBitmap(temp.getPlantPic());
+        TVplantName.setText(temp.getPlantName());
+        TVeditorName.setText(temp.getEditorName());
 
         return view;
     }
