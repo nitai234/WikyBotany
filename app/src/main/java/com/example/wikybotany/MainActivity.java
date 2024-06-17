@@ -3,6 +3,7 @@ package com.example.wikybotany;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -97,25 +98,31 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         EditText ETDhighMin, ETDhighMax;
         ETDhighMin = DIfilters.findViewById(R.id.ETDhighMin);
         ETDhighMax = DIfilters.findViewById(R.id.ETDhighMax);
-        if (filters.getHighMin() != 0)
-        {
-            ETDhighMin.setText(filters.getHighMin());
-        }
-        if (filters.getHighMax() != 0)
-        {
-            ETDhighMax.setText(filters.getHighMax());
-        }
+
 
 
         Button BTDsearch, BTDback;
         BTDback = DIfilters.findViewById(R.id.BTDback);
         BTDsearch = DIfilters.findViewById(R.id.BTDsearch);
 
+        if (filters.getHighMin() != 0)
+        {
+            ETDhighMin.setText(""+filters.getHighMin());
+        }
+        if (filters.getHighMax() != 0)
+        {
+            ETDhighMax.setText(""+filters.getHighMax());
+        }
+
         DIfilters.show();
+
+
+
+
         RGplant.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                filters.setPickTime(i);
+                filters.setPlantTime(i);
             }
         });
 
@@ -146,14 +153,7 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
                 filters.setLight(i);
             }
         });
-        if (!ETDhighMin.getText().toString().equals(""))
-        {
-            filters.setHighMin(Integer.parseInt(ETDhighMin.getText().toString()));
-        }
-        if (!ETDhighMin.getText().toString().equals(""))
-        {
-            filters.setHighMax(Integer.parseInt(ETDhighMax.getText().toString()));
-        }
+
 
         BTDback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,11 +166,48 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         BTDsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!ETDhighMin.getText().toString().equals(""))
+                {
+                    filters.setHighMin(Integer.parseInt(ETDhighMin.getText().toString()));
+                }
+                else if (ETDhighMin.getText().toString().equals(""))
+                {
+                    filters.setHighMin(0);
+                }
+                if (!ETDhighMax.getText().toString().equals(""))
+                {
+                    filters.setHighMax(Integer.parseInt(ETDhighMax.getText().toString()));
+                }
+                else if (ETDhighMax.getText().toString().equals(""))
+                {
+                    filters.setHighMax(0);
+                }
+                DIfilters.dismiss();
                 AppHelp.search2();
             }
         });
+        DIfilters.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialogInterface) {
+                if (!ETDhighMin.getText().toString().equals(""))
+                {
+                    filters.setHighMin(Integer.parseInt(ETDhighMin.getText().toString()));
+                }
+                else if (ETDhighMin.getText().toString().equals(""))
+                {
+                    filters.setHighMin(0);
+                }
+                if (!ETDhighMax.getText().toString().equals(""))
+                {
+                    filters.setHighMax(Integer.parseInt(ETDhighMax.getText().toString()));
+                }
+                else if (ETDhighMax.getText().toString().equals(""))
+                {
+                    filters.setHighMax(0);
+                }
 
-
+            }
+        });
 
     }
 
@@ -203,6 +240,8 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         }
         return true;
     }
+
+
 
 //    @Override
 //    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)

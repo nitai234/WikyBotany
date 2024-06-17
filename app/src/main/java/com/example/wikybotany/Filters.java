@@ -87,11 +87,11 @@ public class Filters
     }
 
     public int getHighMax() {
-        return highMin;
+        return highMax;
     }
 
     public void setHighMax(int high) {
-        this.highMin = high;
+        this.highMax = high;
     }
 
     public int getWater() {
