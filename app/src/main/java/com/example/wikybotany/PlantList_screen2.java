@@ -18,6 +18,7 @@ public class PlantList_screen2 extends AppCompatActivity implements View.OnClick
     ListView LVplants;
     ArrayList<LineDisplay> plantsList;
 
+    Button BTback;
     LineDisplayAdapter plantsListAdapter;
     int listCounter; //מספר האיברים ברשימה
     @Override
@@ -25,8 +26,6 @@ public class PlantList_screen2 extends AppCompatActivity implements View.OnClick
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_list_screen2);
-
-        Button BTback;
 
         BTback = findViewById(R.id.BTback);
         BTback.setOnClickListener(this);

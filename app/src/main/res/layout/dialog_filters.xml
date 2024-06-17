@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="500dp"
-    android:layout_height="600dp"
+    android:layout_height="570dp"
     android:layout_gravity="center"
     android:orientation="vertical"
     android:background="#7750FBD9">
@@ -299,7 +299,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/BTDsearch"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
             android:backgroundTint="#939393"
             android:text="חפש"
@@ -311,7 +310,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/BTDback"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
             android:backgroundTint="#939393"
             android:text="סגור ואפס"
             android:textSize="25dp"
