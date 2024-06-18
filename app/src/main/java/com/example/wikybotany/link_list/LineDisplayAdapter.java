@@ -6,14 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.wikybotany.Plant;
 import com.example.wikybotany.R;
-import com.example.wikybotany.link_list.LineDisplay;
 
 import java.util.ArrayList;
 
@@ -21,14 +20,15 @@ import java.util.ArrayList;
 public class LineDisplayAdapter extends ArrayAdapter<LineDisplay>
 {
     Context context;
-    //LineDisplay[] lineDisplays;
-    ArrayList<LineDisplay> lineDisplayArry ;
+    ArrayList<Plant> lineDisplayArry ;
 
-    public LineDisplayAdapter(@NonNull Context context, int resource, int textViewResourceId, @NonNull ArrayList<LineDisplay> objects) {
-        super(context, resource, textViewResourceId, objects);
+    TextView TVplantName, TVDifficult;
+
+    public LineDisplayAdapter(@NonNull Context context, int resource, ArrayList<Plant> plantsList) {
+        super(context, resource);
 
         this.context = context;
-        this.lineDisplayArry = objects;
+        this.lineDisplayArry = plantsList;
 
     }
 
@@ -39,17 +39,15 @@ public class LineDisplayAdapter extends ArrayAdapter<LineDisplay>
         LayoutInflater layoutInflater = ((Activity) context).getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.custom_layout, parent, false);
 
-        ImageView IMplantPic = view.findViewById(R.id.IMplantPic);
-        TextView TVplantName = view.findViewById(R.id.TVplantName);
-        TextView TVeditorName = view.findViewById(R.id.TVeditorName);
+         TVplantName = view.findViewById(R.id.TVplantName);
+         TVDifficult = view.findViewById(R.id.TVeditorName);
 
         //מצביע למיקום בarry list
-        LineDisplay temp = lineDisplayArry.get(position) ;
+        Plant temp = lineDisplayArry.get(position) ;
 
         //קובע את הערכים של התיבה הנוכחית
-        IMplantPic.setImageBitmap(temp.getPlantPic());
-        TVplantName.setText(temp.getPlantName());
-        TVeditorName.setText(temp.getEditorName());
+        TVplantName.setText("שם הצמח: " + temp.getPlantName());
+        TVDifficult.setText( "קושי לגידול: "+ temp.getDifficult());
 
         return view;
     }

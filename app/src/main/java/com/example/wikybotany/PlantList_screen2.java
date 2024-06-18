@@ -2,6 +2,7 @@ package com.example.wikybotany;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,33 +17,56 @@ import java.util.ArrayList;
 public class PlantList_screen2 extends AppCompatActivity implements View.OnClickListener {
 
     ListView LVplants;
-    ArrayList<LineDisplay> plantsList;
+    ArrayList<Plant> plantsList;
+    SQLiteHelper sqLiteHelper;
+    LineDisplayAdapter lineDisplayAdapter;
 
+    Intent intentGetMain;
     Button BTback;
-    LineDisplayAdapter plantsListAdapter;
-    int listCounter; //מספר האיברים ברשימה
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_list_screen2);
 
+        LVplants = findViewById(R.id.LVplant);
+
         BTback = findViewById(R.id.BTback);
         BTback.setOnClickListener(this);
 
-        plantsList = new ArrayList<LineDisplay>();
-        //כאן יהיה לולאה/ פעולה שתוסיף איברים למערך הנ"ל
+        sqLiteHelper = new SQLiteHelper(this);
+        plantsList = new ArrayList<Plant>();
 
-        plantsListAdapter = new LineDisplayAdapter(this, 0, 0, plantsList);
-        LVplants = findViewById(R.id.LVplant);
-        LVplants.setAdapter(plantsListAdapter);
+
+        if (intentGetMain.getExtras().containsKey("search_all"))
+        {
+            sqLiteHelper.open();
+            plantsList = sqLiteHelper.getAllPlants();
+            sqLiteHelper.close();
+
+            lineDisplayAdapter = new LineDisplayAdapter(this, 0, plantsList);
+            LVplants.setAdapter(lineDisplayAdapter);
+        }
+
+        else if (intentGetMain.getExtras().containsKey("search_by_word"))
+        {
+
+        }
+
+        else if (intentGetMain.getExtras().containsKey("search_by_filter"))
+        {
+
+        }
 
     }
 
     @Override
     public void onClick(View view)
     {
-
+        if (view == BTback)
+        {
+            finish();
+        }
 
     }
 }

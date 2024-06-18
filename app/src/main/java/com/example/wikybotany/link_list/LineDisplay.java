@@ -6,13 +6,13 @@ public class LineDisplay
 {
     private Bitmap plantPic;
     private String plantName;
-    private String editorName;
+    private String difficult;
 
-    public LineDisplay(Bitmap plantPic, String plantName, String editorName)
+    public LineDisplay(Bitmap plantPic, String plantName, String difficult)
     {
         this.plantPic = plantPic;
         this.plantName = plantName;
-        this.editorName = editorName;
+        this.difficult = difficult;
     }
 
     public Bitmap getPlantPic()
@@ -23,9 +23,9 @@ public class LineDisplay
     {
         return this.plantName;
     }
-    public String getEditorName()
+    public String getDifficult()
     {
-        return this.editorName;
+        return this.difficult;
     }
 
     public void setPlantPic(Bitmap plantPic)
@@ -36,9 +36,9 @@ public class LineDisplay
     {
         this.plantName = plantName;
     }
-    public void setEditorName(String editorName)
+    public void setDifficult(String editorName)
     {
-        this.editorName = editorName;
+        this.difficult = editorName;
     }
 
 

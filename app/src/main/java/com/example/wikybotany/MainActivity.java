@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
     EditText ETsearch;
     Dialog DIfilters;
     Filters filters;
+    Intent intentToScreen2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         //  spinner = findViewById(R.id.Spcategories);
        // spinner.setOnItemSelectedListener(this);
        // ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categories_array, android.R.layout.simple_spinner_item);
+
+        intentToScreen2 = new Intent(this, PlantList_screen2.class);
 
         filters = new Filters();
 
@@ -70,6 +75,18 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         {
             createFilterDialog();
         }
+
+        else if (view == BTshowAll)
+        {
+            intentToScreen2.putExtra("search_all",0);
+            startActivity(intentToScreen2);
+        }
+        else if (view == BTsearch)
+        {
+            intentToScreen2.putExtra("search_by_word", ETsearch.getText().toString());
+            startActivity(intentToScreen2);
+        }
+
     }
 
     public void createFilterDialog()
@@ -182,8 +199,12 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
                 {
                     filters.setHighMax(0);
                 }
+
+                String[] filterString = AppHelp.filterToString(filters);
+                intentToScreen2.putExtra("search_by_filter", filterString);
+                startActivity(intentToScreen2);
+
                 DIfilters.dismiss();
-                AppHelp.search2();
             }
         });
         DIfilters.setOnCancelListener(new DialogInterface.OnCancelListener() {

@@ -34,15 +34,17 @@ public class Filters
         this.light = -1;
     }
 
+    //פעולה שבודקת האם יש מסננים
     public boolean isFilters()
     {
-        if ((this.pickTime + this.plantTime + this.difficult  + this.water + this.light) != -5)
+        if (((this.pickTime + this.plantTime + this.difficult  + this.water + this.light) != -5) && highMin + highMax != 0)
         {
             return true;
         }
         return false;
     }
 
+    //פיולה שמאפסת את המשתנים
     public void clean()
     {
         this.plantTime = -1;
@@ -53,6 +55,7 @@ public class Filters
         this.water = -1;
         this.light = -1;
     }
+
 
     public int getPlantTime() {
         return plantTime;
