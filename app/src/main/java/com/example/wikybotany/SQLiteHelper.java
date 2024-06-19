@@ -79,7 +79,8 @@ public class SQLiteHelper extends SQLiteOpenHelper
         values.put(COLUMN_LIGHT, plant.getLight());
         values.put(COLUMN_DETAILS, plant.getDetails());
 
-       long id = database.insert(TABLE_PLANT, null, values);
+        database.insert(TABLE_PLANT, null, values);
+        long id = database.insert(TABLE_PLANT, null, values);
         Log.i("SQL", "Plant " + id + "insert to database");
     }
 
@@ -107,6 +108,8 @@ public class SQLiteHelper extends SQLiteOpenHelper
         }
         return plantArrayList;
     }
+
+
 
 
 }

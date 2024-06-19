@@ -1,14 +1,13 @@
 package com.example.wikybotany;
 
-import android.widget.ListView;
-
-import com.example.wikybotany.link_list.LineDisplayAdapter;
+import android.content.Context;
 
 import java.util.ArrayList;
 
 public class AppHelp {
 
-
+    
+    public static final String JSONhttp = "https://www.isaac770.live/media/plant_table_v1.json";
 
 
     //פעולה שמקבלת פילטר וממירה אותו למערך סטרינג של הקריטריונים
@@ -58,6 +57,17 @@ public class AppHelp {
 
         return StringfiltersArr;
     }
+
+    public static void arrayListToSQL(ArrayList<Plant> plantArrayList, Context context)
+    {
+        SQLiteHelper sqLiteHelper = new SQLiteHelper(context);
+        for (int i =0; i<plantArrayList.size(); i++)
+        {
+            sqLiteHelper.addPlantToTable(plantArrayList.get(i));
+        }
+    }
+
+
 
 
 

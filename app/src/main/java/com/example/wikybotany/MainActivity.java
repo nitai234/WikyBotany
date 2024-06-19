@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
     Filters filters;
     Intent intentToScreen2;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         //  spinner = findViewById(R.id.Spcategories);
        // spinner.setOnItemSelectedListener(this);
        // ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categories_array, android.R.layout.simple_spinner_item);
+
+        AppHelp.arrayListToSQL(DownloadJSON.getJsondata(AppHelp.JSONhttp), this);
 
         intentToScreen2 = new Intent(this, PlantList_screen2.class);
 

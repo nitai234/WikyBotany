@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Details_screen3">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/BTback3"
+                android:layout_width="200dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="#A9687581"
+                android:text="חזור"
+                android:textSize="33sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/TVplantName3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="שם הצמח"
+                android:textSize="60sp"
+                android:layout_gravity="center"
+                android:textColor="#000000"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="50dp">
+                    <TextView
+                        android:id="@+id/TVplantTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="עונת שתילה"
+                        android:textColor="#000000"
+                        android:textSize="30sp"
+                        />
+                    <TextView
+                        android:id="@+id/TVpickTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="עונת קטיף"
+                        android:textColor="#000000"
+                        android:textSize="30sp"
+                        />
+                    <TextView
+                        android:id="@+id/TVdifficult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="רמת קושי"
+                        android:textColor="#000000"
+                        android:textSize="30sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp">
+                    <TextView
+                        android:id="@+id/TVhigh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="גובה"
+                        android:textColor="#000000"
+                        android:textSize="30sp"
+                        />
+                    <TextView
+                        android:id="@+id/TVwater"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="כמות מים"
+                        android:textColor="#000000"
+                        android:textSize="30sp"
+                        />
+                    <TextView
+                        android:id="@+id/TVlight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="כמות אור"
+                        android:textColor="#000000"
+                        android:textSize="30sp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:text="הסבר על הצמח:"
+                android:textSize="37sp"
+                android:textColor="#000000"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:id="@+id/TVdetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="כל הפרטים"
+                android:textSize="27sp"
+                android:textColor="#000000"/>
+        </LinearLayout>
+
+
+
+</ScrollView>
