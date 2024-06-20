@@ -3,20 +3,15 @@
 
 
         <item
-            android:id="@+id/favourites"
+            android:id="@+id/information"
             android:icon="@android:drawable/star_big_on"
-            android:title="מועדפים" />
+            android:title="מידע על האפליקציה" />
 
 
         <item
-            android:id="@+id/lastSearch"
-            android:title="חיפושים אחרונים"
+            android:id="@+id/improve"
+            android:title="הגשת הצעה להוספה/ תיקון"
             />
 
-
-        <item
-            android:id="@+id/setting"
-            android:title="הגדרות"
-            />
 
 </menu>

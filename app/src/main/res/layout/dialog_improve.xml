@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="אנא כתוב כאן את ההצעה להוספה או שיפור, ההצעות ישלחו בSMS:"
+        android:textSize="29sp"
+        android:textColor="#000000"/>
+
+        <Button
+            android:id="@+id/BTDback3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#8A6A6A6A"
+            android:text="חזור"
+            android:textSize="30sp" />
+        <Button
+            android:id="@+id/BTDsend"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#10A2F1"
+            android:text="שלח"
+            android:textSize="30sp"
+            android:layout_marginTop="10dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/ETDimp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"/>
+    </ScrollView>
+
+</LinearLayout>
+

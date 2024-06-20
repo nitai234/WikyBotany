@@ -137,7 +137,7 @@ public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>> {
 
     public void arrayListToSQL(ArrayList<Plant> plantArrayList)
     {
-        SQLiteHelper sqLiteHelper = new SQLiteHelper();
+        //SQLiteHelper sqLiteHelper = new SQLiteHelper();
         for (int i=0; i< plantArrayList.size(); i++)
         {
             sqLiteHelper.addPlantToTable(plantArrayList.get(i));

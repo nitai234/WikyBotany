@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
 
     Button BTsearch, BTshowAll, BTlocation, BTfilter;
     EditText ETsearch;
-    Dialog DIfilters;
+    Dialog DIfilters, DIinformation, DIimprove;
     Filters filters;
     Intent intentToScreen2;
 
@@ -254,22 +255,69 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         Log.d("menu_main, select item", item + "is choose");
 
         int id = item.getItemId();
-        if(id == R.id.favourites)
+        if(id == R.id.information)
         {
-
+            createInfoDialog();
         }
-        else if (id == R.id.lastSearch)
+        else if (id == R.id.improve)
         {
-
-        }
-        else if (id == R.id.setting)
-        {
-
+            createImpDialog();
         }
         return true;
     }
 
+    public void createInfoDialog()
+    {
+        DIinformation = new Dialog(this);
+        DIinformation.setContentView(R.layout.dialog_information);
+        DIinformation.setTitle("מידע");
+        DIinformation.setCancelable(true);
+        Button BTDback2 = findViewById(R.id.BTDback2);
+        BTDback2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DIinformation.dismiss();
+            }
+        });
+        DIinformation.show();
 
+    }
+    public void createImpDialog()
+    {
+        DIimprove = new Dialog(this);
+        DIimprove.setContentView(R.layout.dialog_improve);
+        DIimprove.setTitle("שיפור");
+        DIimprove.setCancelable(true);
+
+        EditText ETDimp = findViewById(R.id.ETDimp);
+
+        Button BTDback3 = findViewById(R.id.BTDback3);
+        Button BTDsend = findViewById(R.id.BTDsend);
+
+        DIimprove.show();
+
+        BTDsend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String message = ETDimp.getText().toString();
+                String phoneNumber="0555592598";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + phoneNumber));
+                intent.putExtra("sms_body", message);
+                startActivity(intent);
+
+                Toast.makeText(MainActivity.this, "ההודעה נשלחה, תודה על ההצעה", Toast.LENGTH_LONG).show();
+                DIimprove.dismiss();
+            }
+        });
+
+        BTDback3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DIimprove.dismiss();
+            }
+        });
+    }
+}
 
 
 //    @Override
@@ -286,4 +334,3 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
 //    }
 //
 
-}

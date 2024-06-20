@@ -40,7 +40,7 @@ public class LineDisplayAdapter extends ArrayAdapter<LineDisplay>
         View view = layoutInflater.inflate(R.layout.custom_layout, parent, false);
 
          TVplantName = view.findViewById(R.id.TVplantName);
-         TVDifficult = view.findViewById(R.id.TVeditorName);
+         TVDifficult = view.findViewById(R.id.TVdifficultLevel);
 
         //מצביע למיקום בarry list
         Plant temp = lineDisplayArry.get(position) ;
