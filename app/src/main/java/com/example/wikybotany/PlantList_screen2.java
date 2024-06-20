@@ -29,6 +29,7 @@ public class PlantList_screen2 extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_list_screen2);
 
+        intentGetMain = getIntent();
         LVplants = findViewById(R.id.LVplant);
 
         BTback = findViewById(R.id.BTback);

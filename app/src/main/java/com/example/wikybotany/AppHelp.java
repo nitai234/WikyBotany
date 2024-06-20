@@ -2,6 +2,8 @@ package com.example.wikybotany;
 
 import android.content.Context;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
 public class AppHelp {
@@ -58,14 +60,10 @@ public class AppHelp {
         return StringfiltersArr;
     }
 
-    public static void arrayListToSQL(ArrayList<Plant> plantArrayList, Context context)
-    {
-        SQLiteHelper sqLiteHelper = new SQLiteHelper(context);
-        for (int i =0; i<plantArrayList.size(); i++)
-        {
-            sqLiteHelper.addPlantToTable(plantArrayList.get(i));
-        }
-    }
+
+
+
+
 
 
 

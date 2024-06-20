@@ -31,12 +31,6 @@ public class SQLiteHelper extends SQLiteOpenHelper
 
     SQLiteDatabase database;
 
-    //פעולה שאין לי מושג מה היא עושה אבל חייב לממש אותה או משו כזה
-    public SQLiteHelper(@Nullable Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-    }
-
-
     //שאילתה שיוצרת טבלא אם היא לא קיימת
     private static final String CREATE_TABLE_PLANT="CREATE TABLE IF NOT EXISTS " +
             TABLE_PLANT + "(" + COLUMN_ID +  " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_PLANT_NAME + " VARCHAR," + COLUMN_PLANT_TIME + " VARCHAR,"
@@ -44,12 +38,22 @@ public class SQLiteHelper extends SQLiteOpenHelper
             + COLUMN_HIGH +   " INTEGER,"  +  COLUMN_WATER + " VARCHAR," +  COLUMN_LIGHT + " VARCHAR," + COLUMN_DETAILS + " VARCHAR " + ");";
 
     //פעולה שיוצרת מערך של כל העמודות
-    String []allColumns={COLUMN_PLANT_NAME, COLUMN_PLANT_TIME, COLUMN_PICK_TIME, COLUMN_DIFFICULT, COLUMN_HIGH, COLUMN_WATER, COLUMN_LIGHT, COLUMN_DETAILS};
+    String[] allColumns={COLUMN_PLANT_NAME, COLUMN_PLANT_TIME, COLUMN_PICK_TIME, COLUMN_DIFFICULT, COLUMN_HIGH, COLUMN_WATER, COLUMN_LIGHT, COLUMN_DETAILS};
+
+
+    //פעולה שאין לי מושג מה היא עושה אבל חייב לממש אותה או משו כזה
+    public SQLiteHelper(@Nullable Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
 
 
     //פעולה שיוצרת טבלה חדשה
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_PLANT);
         sqLiteDatabase.execSQL(CREATE_TABLE_PLANT);
+        DownloadJSON downloadJSON = new DownloadJSON();
+        downloadJSON.execute(AppHelp.JSONhttp);
+      //  AppHelp.arrayListToSQL(DownloadJSON.getJsondata(AppHelp.JSONhttp), this);
         Log.d("SQL", "Table " + TABLE_PLANT + "is create");
     }
 
@@ -58,6 +62,7 @@ public class SQLiteHelper extends SQLiteOpenHelper
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i1, int i2) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_PLANT);
         onCreate(sqLiteDatabase);
+
     }
 
     //פעולה שפותחת קישור לדאטאבייס
@@ -66,6 +71,7 @@ public class SQLiteHelper extends SQLiteOpenHelper
         database=this.getWritableDatabase();
         Log.i("SQL", "Database connection open");
     }
+
 
     public void addPlantToTable(Plant plant)
     {
@@ -108,6 +114,7 @@ public class SQLiteHelper extends SQLiteOpenHelper
         }
         return plantArrayList;
     }
+
 
 
 

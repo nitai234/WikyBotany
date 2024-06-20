@@ -22,6 +22,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity implements /*AdapterView.OnItemSelectedListener,*/ View.OnClickListener {
 
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
     Dialog DIfilters;
     Filters filters;
     Intent intentToScreen2;
+
+    SQLiteHelper sqLiteHelper;
 
 
     @Override
@@ -43,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
        // spinner.setOnItemSelectedListener(this);
        // ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categories_array, android.R.layout.simple_spinner_item);
 
-        AppHelp.arrayListToSQL(DownloadJSON.getJsondata(AppHelp.JSONhttp), this);
+          //  AppHelp.arrayListToSQL(DownloadJSON.getJsondata(AppHelp.JSONhttp), this);
 
         intentToScreen2 = new Intent(this, PlantList_screen2.class);
 
@@ -264,6 +268,7 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         }
         return true;
     }
+
 
 
 
