@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,58 +14,59 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>> {
+public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>>  {
 
     ProgressDialog p;
     SQLiteHelper sqLiteHelper;
 
-        @Override
-        protected void onPreExecute() {
-            // TODO Auto-generated method stub
-            p=ProgressDialog.show(p.getContext(), "Upload JSON files","Loading please wait...",true);
-            p.setCancelable(true);
-            p.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            p.setMessage("Loading...");
-            p.show();
 
-            super.onPreExecute();
-        }
-        @Override
-        protected ArrayList<Plant> doInBackground(String... params) {
-            // TODO Auto-generated method stub
-            ArrayList<Plant> data=null;
-            HttpURLConnection urlConnection=null;
-            URL url = null;
-            try
-            {
-                data = getJsondata(params[0]);
-            }
-            catch(Exception e)
-            {
+    @Override
+    protected void onPreExecute() {
+        // TODO Auto-generated method stub
+        p=ProgressDialog.show(p.getContext(), "Upload JSON files","Loading please wait...",true);
+        p.setCancelable(true);
+        p.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        p.setMessage("Loading...");
+        p.show();
 
-            }
-            return data;
+        super.onPreExecute();
+    }
+    @Override
+    protected ArrayList<Plant> doInBackground(String... params) {
+        // TODO Auto-generated method stub
+        ArrayList<Plant> data=null;
+        HttpURLConnection urlConnection=null;
+        URL url = null;
+        try
+        {
+            data = getJsondata(params[0]);
         }
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            // TODO Auto-generated method stub
-            super.onProgressUpdate(values);
+        catch(Exception e)
+        {
+
         }
-        @Override
-        protected void onPostExecute(ArrayList<Plant> result) {
-            // TODO Auto-generated method stub
-            super.onPostExecute(result);
-            if(result!=null)
-            {
-                arrayListToSQL(result);
-                p.dismiss();
-            }
+        return data;
+    }
+    @Override
+    protected void onProgressUpdate(Integer... values) {
+        // TODO Auto-generated method stub
+        super.onProgressUpdate(values);
+    }
+    @Override
+    protected void onPostExecute(ArrayList<Plant> result) {
+        // TODO Auto-generated method stub
+        super.onPostExecute(result);
+        if(result!=null)
+        {
+            arrayListToSQL(result);
+            p.dismiss();
         }
+    }
+
 
     public ArrayList<Plant> getJsondata(String strurl)
     {
@@ -137,14 +137,14 @@ public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>> {
 
     public void arrayListToSQL(ArrayList<Plant> plantArrayList)
     {
-        //SQLiteHelper sqLiteHelper = new SQLiteHelper();
+        SQLiteHelper sqLiteHelper = new SQLiteHelper();
         for (int i=0; i< plantArrayList.size(); i++)
         {
             sqLiteHelper.addPlantToTable(plantArrayList.get(i));
         }
     }
 
-
+}
 
 
 //    public static ArrayList<Plant> getJsondata(String strurl)
@@ -223,4 +223,4 @@ public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>> {
 
 
 
-}
+

@@ -20,9 +20,6 @@
             android:name=".Details_screen3"
             android:exported="false" />
         <activity
-            android:name=".Setting"
-            android:exported="false" />
-        <activity
             android:name=".PlantList_screen2"
             android:exported="false" />
         <activity

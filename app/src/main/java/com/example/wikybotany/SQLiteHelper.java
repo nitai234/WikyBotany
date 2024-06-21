@@ -49,10 +49,7 @@ public class SQLiteHelper extends SQLiteOpenHelper
 
     //פעולה שיוצרת טבלה חדשה
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_PLANT);
-        sqLiteDatabase.execSQL(CREATE_TABLE_PLANT);
-        DownloadJSON downloadJSON = new DownloadJSON();
-        downloadJSON.execute(AppHelp.JSONhttp);
+    database.execSQL(CREATE_TABLE_PLANT);
       //  AppHelp.arrayListToSQL(DownloadJSON.getJsondata(AppHelp.JSONhttp), this);
         Log.d("SQL", "Table " + TABLE_PLANT + "is create");
     }
@@ -114,6 +111,7 @@ public class SQLiteHelper extends SQLiteOpenHelper
         }
         return plantArrayList;
     }
+
 
 
 

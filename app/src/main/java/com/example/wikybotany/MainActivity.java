@@ -3,6 +3,7 @@ package com.example.wikybotany;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -37,16 +38,18 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
     SQLiteHelper sqLiteHelper;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DownloadJSON downloadJSON = new DownloadJSON();
+        downloadJSON.execute(AppHelp.JSONhttp);
 
-        // Spinner spinner;
-        //  spinner = findViewById(R.id.Spcategories);
-       // spinner.setOnItemSelectedListener(this);
-       // ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categories_array, android.R.layout.simple_spinner_item);
+
+        sqLiteHelper = new SQLiteHelper(this);
+
 
           //  AppHelp.arrayListToSQL(DownloadJSON.getJsondata(AppHelp.JSONhttp), this);
 
@@ -74,8 +77,6 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
     }
 
 
-
-
     @Override
     public void onClick(View view)
     {
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         }
 
     }
+
 
     public void createFilterDialog()
     {
@@ -272,14 +274,15 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         DIinformation.setContentView(R.layout.dialog_information);
         DIinformation.setTitle("מידע");
         DIinformation.setCancelable(true);
-        Button BTDback2 = findViewById(R.id.BTDback2);
+        Button BTDback2 = DIinformation.findViewById(R.id.BTDback2);
+
+        DIinformation.show();
         BTDback2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DIinformation.dismiss();
             }
         });
-        DIinformation.show();
 
     }
     public void createImpDialog()
@@ -289,10 +292,10 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         DIimprove.setTitle("שיפור");
         DIimprove.setCancelable(true);
 
-        EditText ETDimp = findViewById(R.id.ETDimp);
+        EditText ETDimp = DIimprove.findViewById(R.id.ETDimp);
 
-        Button BTDback3 = findViewById(R.id.BTDback3);
-        Button BTDsend = findViewById(R.id.BTDsend);
+        Button BTDback3 = DIimprove.findViewById(R.id.BTDback3);
+        Button BTDsend = DIimprove.findViewById(R.id.BTDsend);
 
         DIimprove.show();
 
@@ -317,6 +320,9 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
             }
         });
     }
+
+
+
 }
 
 
