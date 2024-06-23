@@ -22,32 +22,40 @@ public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>>  
 
     ProgressDialog p;
     SQLiteHelper sqLiteHelper;
+    Context context;
 
+    public DownloadJSON(SQLiteHelper sqLiteHelper, Context context)
+    {
+        super();
+        this.sqLiteHelper = sqLiteHelper;
+        this.context = context;
+    }
 
     @Override
     protected void onPreExecute() {
+        super.onPreExecute();
         // TODO Auto-generated method stub
-        p=ProgressDialog.show(p.getContext(), "Upload JSON files","Loading please wait...",true);
+        p=ProgressDialog.show(context, "Upload JSON files","Loading please wait...",true);
         p.setCancelable(true);
         p.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         p.setMessage("Loading...");
         p.show();
 
-        super.onPreExecute();
+
     }
     @Override
     protected ArrayList<Plant> doInBackground(String... params) {
         // TODO Auto-generated method stub
         ArrayList<Plant> data=null;
-        HttpURLConnection urlConnection=null;
-        URL url = null;
+      //  HttpURLConnection urlConnection=null;
+      //  URL url = null;
         try
         {
             data = getJsondata(params[0]);
         }
         catch(Exception e)
         {
-
+            Log.e("Error", "JSON error"+ e.getMessage());
         }
         return data;
     }
@@ -72,18 +80,19 @@ public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>>  
     {
         ArrayList<Plant>arrayList=new ArrayList<Plant>();
         String line="";
-        String res="";
+        //String res="";
         InputStream in=null;
         try
         {
-            HttpURLConnection urlConnection=null;
-            URL url = null;
+//            HttpURLConnection urlConnection=null;
+//            URL url = null;
             try
             {
                 URL myURL = new URL(strurl);
                 HttpsURLConnection ucon = (HttpsURLConnection) myURL.openConnection();
                 in = ucon.getInputStream();
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Log.d("Error",e.getMessage());
             }
@@ -110,13 +119,13 @@ public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>>  
                 {
                     JSONObject json_data = jArray.getJSONObject(i);
                     String plantName = json_data.getString("Name");
-                     String plantTime = json_data.getString("plant Time");
-                     String pickTime = json_data.getString("pick Time");
-                     String difficult = json_data.getString("difficult Level");
-                     int high = json_data.getInt("high");
-                     String water = json_data.getString("water");
-                     String light = json_data.getString("light");
-                     String details = json_data.getString("detail");
+                    String plantTime = json_data.getString("plant Time");
+                    String pickTime = json_data.getString("pick Time");
+                    String difficult = json_data.getString("difficult Level");
+                    int high = json_data.getInt("high");
+                    String water = json_data.getString("water");
+                    String light = json_data.getString("light");
+                    String details = json_data.getString("detail");
 
                     Plant plant= new Plant(plantName, plantTime, pickTime, difficult, high, water, light, details);
                     arrayList.add(plant);
@@ -137,11 +146,13 @@ public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>>  
 
     public void arrayListToSQL(ArrayList<Plant> plantArrayList)
     {
-        SQLiteHelper sqLiteHelper = new SQLiteHelper();
+        sqLiteHelper.open();
         for (int i=0; i< plantArrayList.size(); i++)
         {
+
             sqLiteHelper.addPlantToTable(plantArrayList.get(i));
         }
+        sqLiteHelper.close();
     }
 
 }

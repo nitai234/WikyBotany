@@ -44,11 +44,13 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DownloadJSON downloadJSON = new DownloadJSON();
+        sqLiteHelper = new SQLiteHelper(this);
+
+        DownloadJSON downloadJSON = new DownloadJSON(sqLiteHelper, this);
         downloadJSON.execute(AppHelp.JSONhttp);
 
 
-        sqLiteHelper = new SQLiteHelper(this);
+
 
 
           //  AppHelp.arrayListToSQL(DownloadJSON.getJsondata(AppHelp.JSONhttp), this);

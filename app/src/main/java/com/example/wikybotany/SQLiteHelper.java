@@ -49,7 +49,7 @@ public class SQLiteHelper extends SQLiteOpenHelper
 
     //פעולה שיוצרת טבלה חדשה
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-    database.execSQL(CREATE_TABLE_PLANT);
+        sqLiteDatabase.execSQL(CREATE_TABLE_PLANT);
       //  AppHelp.arrayListToSQL(DownloadJSON.getJsondata(AppHelp.JSONhttp), this);
         Log.d("SQL", "Table " + TABLE_PLANT + "is create");
     }
@@ -82,7 +82,7 @@ public class SQLiteHelper extends SQLiteOpenHelper
         values.put(COLUMN_LIGHT, plant.getLight());
         values.put(COLUMN_DETAILS, plant.getDetails());
 
-        database.insert(TABLE_PLANT, null, values);
+        //database.insert(TABLE_PLANT, null, values);
         long id = database.insert(TABLE_PLANT, null, values);
         Log.i("SQL", "Plant " + id + "insert to database");
     }
