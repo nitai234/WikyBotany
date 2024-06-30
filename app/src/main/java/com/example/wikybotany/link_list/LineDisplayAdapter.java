@@ -17,7 +17,7 @@ import com.example.wikybotany.R;
 import java.util.ArrayList;
 
 //מייצר את הlist view
-public class LineDisplayAdapter extends ArrayAdapter<LineDisplay>
+public class LineDisplayAdapter extends ArrayAdapter<Plant>
 {
     Context context;
     ArrayList<Plant> lineDisplayArry ;

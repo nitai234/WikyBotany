@@ -50,7 +50,7 @@ public class PlantList_screen2 extends AppCompatActivity implements View.OnClick
             plantsList = sqLiteHelper.getAllPlants();
             sqLiteHelper.close();
 
-            lineDisplayAdapter = new LineDisplayAdapter(this, 0, plantsList);
+            lineDisplayAdapter = new LineDisplayAdapter(this, 0,  plantsList);
             LVplants.setAdapter(lineDisplayAdapter);
 
 

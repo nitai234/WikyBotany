@@ -47,6 +47,7 @@ public class SQLiteHelper extends SQLiteOpenHelper
     }
 
 
+
     //פעולה שיוצרת טבלה חדשה
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_TABLE_PLANT);
@@ -59,7 +60,19 @@ public class SQLiteHelper extends SQLiteOpenHelper
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i1, int i2) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_PLANT);
         onCreate(sqLiteDatabase);
+        Log.d("SQL", "Table " + TABLE_PLANT + "is upgrade");
+    }
 
+
+    public void deleteAndCreate()
+    {
+        database = this.getWritableDatabase();
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_PLANT);
+        onCreate(database);
+    }
+    public SQLiteDatabase getDatabase()
+    {
+        return database;
     }
 
     //פעולה שפותחת קישור לדאטאבייס

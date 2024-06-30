@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
 
         sqLiteHelper = new SQLiteHelper(this);
 
+        sqLiteHelper.deleteAndCreate();
         DownloadJSON downloadJSON = new DownloadJSON(sqLiteHelper, this);
         downloadJSON.execute(AppHelp.JSONhttp);
 

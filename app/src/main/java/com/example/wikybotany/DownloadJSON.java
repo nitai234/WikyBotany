@@ -2,6 +2,7 @@ package com.example.wikybotany;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -24,7 +25,7 @@ public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>>  
     SQLiteHelper sqLiteHelper;
     Context context;
 
-    public DownloadJSON(SQLiteHelper sqLiteHelper, Context context)
+    public DownloadJSON( SQLiteHelper sqLiteHelper, Context context)
     {
         super();
         this.sqLiteHelper = sqLiteHelper;
@@ -94,7 +95,7 @@ public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>>  
             }
             catch (Exception e)
             {
-                Log.d("Error",e.getMessage());
+                Log.e("Error",e.getMessage());
             }
 
 
@@ -146,6 +147,7 @@ public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>>  
 
     public void arrayListToSQL(ArrayList<Plant> plantArrayList)
     {
+
         sqLiteHelper.open();
         for (int i=0; i< plantArrayList.size(); i++)
         {
