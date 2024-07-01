@@ -73,8 +73,6 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         BTshowAll = findViewById(R.id.BTsrcall);
         BTshowAll.setOnClickListener(this);
 
-        BTlocation = findViewById(R.id.BTclothestLocation);
-        BTlocation.setOnClickListener(this);
 
 
 

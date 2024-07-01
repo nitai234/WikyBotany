@@ -99,7 +99,7 @@ public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>>  
             }
 
 
-            BufferedReader x=new BufferedReader(new InputStreamReader(in,"iso-8859-1"));
+            BufferedReader x=new BufferedReader(new InputStreamReader(in,"UTF-8"));
 
             StringBuffer sb=new StringBuffer("");
 

@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <EditText
         android:id="@+id/ETsearch"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-
+        android:layout_height="70dp"
         android:drawableLeft="@android:drawable/ic_menu_search"
         android:hint="חפש..."
         android:textSize="25sp" />
@@ -27,42 +27,29 @@
         />
     <Button
         android:id="@+id/BTsrc"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#776FB7FF"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:backgroundTint="#C16FFFA9"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:text="חפש"
-        android:textSize="23sp"
+        android:textSize="40sp"
         android:textColor="#000000"
         />
 
     <Button
         android:id="@+id/BTsrcall"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#776FB7FF"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#C16FFFA9"
         android:layout_gravity="center"
         android:layout_marginTop="70dp"
         android:text="הצג הכל"
-        android:textSize="23sp"
+        android:textSize="30sp"
         android:textColor="#000000"
         />
 
-    <Button
-        android:id="@+id/BTclothestLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="200dp"
-        android:backgroundTint="#77FF0000"
-        android:text="משתלה קרובה"
-        android:textColor="#000000"
-        android:textSize="23sp"
-        app:icon="@android:drawable/ic_menu_mylocation"
-        app:iconSize="40dp"
-        app:iconTint="#000000" />
 
-    
+
 
 </LinearLayout>

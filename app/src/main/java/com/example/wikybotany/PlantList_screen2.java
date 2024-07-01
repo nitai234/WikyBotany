@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.wikybotany.link_list.LineDisplay;
 import com.example.wikybotany.link_list.LineDisplayAdapter;
@@ -18,10 +19,10 @@ import java.util.ArrayList;
 public class PlantList_screen2 extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     ListView LVplants;
-    ArrayList<Plant> plantsList;
+
     SQLiteHelper sqLiteHelper;
     LineDisplayAdapter lineDisplayAdapter;
-
+    ArrayList<Plant> plantsList;
     Intent intentGetMain, intentToScreen3;
     Button BTback;
     @Override
@@ -50,14 +51,37 @@ public class PlantList_screen2 extends AppCompatActivity implements View.OnClick
             plantsList = sqLiteHelper.getAllPlants();
             sqLiteHelper.close();
 
-            lineDisplayAdapter = new LineDisplayAdapter(this, 0,  plantsList);
-            LVplants.setAdapter(lineDisplayAdapter);
+            if(plantsList.isEmpty())
+            {
+                Toast.makeText(this,"no results", Toast.LENGTH_LONG).show();
+            }
+            else {
+                lineDisplayAdapter = new LineDisplayAdapter(this, R.layout.custom_layout, plantsList);
+                LVplants.setAdapter(lineDisplayAdapter);
+            }
+
 
 
         }
 
         else if (intentGetMain.getExtras().containsKey("search_by_word"))
         {
+            sqLiteHelper.open();
+            String selection = "plant_name"+"=?", searchWord = intentGetMain.getExtras().toString();
+            String[] selectionArgs = {searchWord};
+            plantsList = sqLiteHelper.getByWordPlant(selection, selectionArgs);
+            sqLiteHelper.close();
+
+            if(plantsList.isEmpty())
+            {
+                Toast.makeText(this,"no results", Toast.LENGTH_LONG).show();
+            }
+
+            else
+            {
+                lineDisplayAdapter = new LineDisplayAdapter(this, R.layout.custom_layout, plantsList);
+                LVplants.setAdapter(lineDisplayAdapter);
+            }
 
         }
 

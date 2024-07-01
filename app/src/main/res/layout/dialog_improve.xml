@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="אנא כתוב כאן את ההצעה להוספה או שיפור, ההצעות ישלחו בSMS:"
+        android:text="ההצעות ישלחו ב SMS למפתח:"
         android:textSize="29sp"
         android:textColor="#000000"/>
 
@@ -36,7 +36,8 @@
             android:id="@+id/ETDimp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="top"/>
+            android:gravity="top"
+            android:hint="אנא כתוב כאן את ההצעה"/>
     </ScrollView>
 
 </LinearLayout>

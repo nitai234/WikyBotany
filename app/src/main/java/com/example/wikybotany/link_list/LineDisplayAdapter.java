@@ -24,19 +24,18 @@ public class LineDisplayAdapter extends ArrayAdapter<Plant>
 
     TextView TVplantName, TVDifficult;
 
-    public LineDisplayAdapter(@NonNull Context context, int resource, ArrayList<Plant> plantsList) {
-        super(context, resource);
 
+    public LineDisplayAdapter(@NonNull Context context, int resource, ArrayList<Plant> plantsList) {
+        super(context, resource, plantsList);
         this.context = context;
         this.lineDisplayArry = plantsList;
-
     }
 
-    @NonNull
+        @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)
     {
-        LayoutInflater layoutInflater = ((Activity) context).getLayoutInflater();
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.custom_layout, parent, false);
 
          TVplantName = view.findViewById(R.id.TVplantName);
