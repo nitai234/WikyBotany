@@ -26,8 +26,7 @@ public class PlantList_screen2 extends AppCompatActivity implements View.OnClick
     Intent intentGetMain, intentToScreen3;
     Button BTback;
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_list_screen2);
 
@@ -45,48 +44,35 @@ public class PlantList_screen2 extends AppCompatActivity implements View.OnClick
 
         LVplants.setOnItemClickListener(this);
 
-        if (intentGetMain.getExtras().containsKey("search_all"))
-        {
+
+        if (intentGetMain.getExtras().containsKey("search_by_word")) {
             sqLiteHelper.open();
-            plantsList = sqLiteHelper.getAllPlants();
-            sqLiteHelper.close();
-
-            if(plantsList.isEmpty())
-            {
-                Toast.makeText(this,"no results", Toast.LENGTH_LONG).show();
-            }
-            else {
-                lineDisplayAdapter = new LineDisplayAdapter(this, R.layout.custom_layout, plantsList);
-                LVplants.setAdapter(lineDisplayAdapter);
-            }
-
-
-
-        }
-
-        else if (intentGetMain.getExtras().containsKey("search_by_word"))
-        {
-            sqLiteHelper.open();
-            String selection = "plant_name"+"=?", searchWord = intentGetMain.getExtras().toString();
+            String selection = "plant_name" + "=? ", searchWord = intentGetMain.getExtras().toString();
             String[] selectionArgs = {searchWord};
             plantsList = sqLiteHelper.getByWordPlant(selection, selectionArgs);
             sqLiteHelper.close();
 
-            if(plantsList.isEmpty())
-            {
-                Toast.makeText(this,"no results", Toast.LENGTH_LONG).show();
-            }
-
-            else
-            {
+            if (plantsList.isEmpty()) {
+                Toast.makeText(this, "no results", Toast.LENGTH_LONG).show();
+            } else {
                 lineDisplayAdapter = new LineDisplayAdapter(this, R.layout.custom_layout, plantsList);
                 LVplants.setAdapter(lineDisplayAdapter);
             }
 
-        }
+        } else if (intentGetMain.getExtras().containsKey("search_all")) {
+            sqLiteHelper.open();
+            plantsList = sqLiteHelper.getAllPlants();
+            sqLiteHelper.close();
 
-        else if (intentGetMain.getExtras().containsKey("search_by_filter"))
-        {
+            if (plantsList.isEmpty()) {
+                Toast.makeText(this, "no results", Toast.LENGTH_LONG).show();
+                intentGetMain.removeExtra("search_all");
+            } else {
+                lineDisplayAdapter = new LineDisplayAdapter(this, R.layout.custom_layout, plantsList);
+                LVplants.setAdapter(lineDisplayAdapter);
+                intentGetMain.removeExtra("search_all");
+            }
+        } else if (intentGetMain.getExtras().containsKey("search_by_filter")) {
 
         }
 
