@@ -40,7 +40,7 @@
                     android:textSize="20sp" />
 
                 <RadioGroup
-                    android:id="@+id/RGpickTime"
+                    android:id="@+id/RGplantTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
@@ -93,7 +93,7 @@
                     android:textSize="20sp" />
 
                 <RadioGroup
-                    android:id="@+id/RGplntTime"
+                    android:id="@+id/RGpickTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
@@ -316,7 +316,7 @@
                 android:id="@+id/BTDback"
                 android:layout_gravity="center"
                 android:backgroundTint="#939393"
-                android:text="סגור ואפס"
+                android:text="סגור"
                 android:textSize="25dp"
                 android:textColor="#FFFFFF"
                 />

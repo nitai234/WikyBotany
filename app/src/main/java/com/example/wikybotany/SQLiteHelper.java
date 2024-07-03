@@ -149,7 +149,30 @@ public class SQLiteHelper extends SQLiteOpenHelper
 
         return plantArrayList;
     }
+    public ArrayList<Plant> getByFilter(String selection)
+    {
+        ArrayList<Plant> plantArrayList = new ArrayList<Plant>();
+        Cursor cursor=database.query(TABLE_PLANT, allColumns, selection, null, null, null, null);
+        if(cursor.getCount()>0)
+        {
+            while(cursor.moveToNext())
+            {
+                String plantName=cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PLANT_NAME));
+                String plantTime = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PLANT_TIME));
+                String pickTime = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PICK_TIME));
+                String difficult = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DIFFICULT));
+                int high= cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_HIGH));
+                String water= cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_WATER));
+                String light= cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LIGHT));
+                String details = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DETAILS));
+                Plant plant = new Plant(plantName, plantTime, pickTime, difficult, high, water, light, details);
+                plantArrayList.add(plant);
+            }
 
+        }
+
+        return  plantArrayList;
+    }
 
 
 

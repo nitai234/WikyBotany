@@ -10,9 +10,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/iconplant"
+        android:icon="@mipmap/ic_plant"
         android:label="Wiky Botany"
-        android:roundIcon="@mipmap/iconplant"
+        android:roundIcon="@mipmap/ic_plant_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WikyBotany"
         tools:targetApi="31">

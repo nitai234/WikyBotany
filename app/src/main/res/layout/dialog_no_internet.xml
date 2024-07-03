@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/no_wifi"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="אין אינטרנט, האפליקציה תפעל ללא הנתונים המעודכנים יש להשיג חיבור ולהכנס לאפליקציה מחדש "
+        android:textSize="35sp"
+        android:gravity="center"
+        />
+    <Button
+        android:id="@+id/BTDclose"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:backgroundTint="#3594F3"
+        android:text="סגור"
+        android:textSize="50dp"
+        android:textColor="#000000"/>
+</LinearLayout>

@@ -47,33 +47,81 @@ public class PlantList_screen2 extends AppCompatActivity implements View.OnClick
 
         if (intentGetMain.getExtras().containsKey("search_by_word")) {
             sqLiteHelper.open();
-            String selection = "plant_name" + "=? ", searchWord = intentGetMain.getExtras().toString();
+            String selection = "plant_name" + "=? ", searchWord = intentGetMain.getStringExtra("search_by_word").toString();
             String[] selectionArgs = {searchWord};
             plantsList = sqLiteHelper.getByWordPlant(selection, selectionArgs);
             sqLiteHelper.close();
 
             if (plantsList.isEmpty()) {
-                Toast.makeText(this, "no results", Toast.LENGTH_LONG).show();
-            } else {
+                Toast.makeText(this, "אין תוצאות", Toast.LENGTH_LONG).show();
+
+            }
+            else {
                 lineDisplayAdapter = new LineDisplayAdapter(this, R.layout.custom_layout, plantsList);
                 LVplants.setAdapter(lineDisplayAdapter);
-            }
 
-        } else if (intentGetMain.getExtras().containsKey("search_all")) {
+            }
+        }
+
+        else if (intentGetMain.getExtras().containsKey("search_all")) {
             sqLiteHelper.open();
             plantsList = sqLiteHelper.getAllPlants();
             sqLiteHelper.close();
 
             if (plantsList.isEmpty()) {
-                Toast.makeText(this, "no results", Toast.LENGTH_LONG).show();
-                intentGetMain.removeExtra("search_all");
+                Toast.makeText(this, "אין תוצאות", Toast.LENGTH_LONG).show();
+
             } else {
                 lineDisplayAdapter = new LineDisplayAdapter(this, R.layout.custom_layout, plantsList);
                 LVplants.setAdapter(lineDisplayAdapter);
-                intentGetMain.removeExtra("search_all");
-            }
-        } else if (intentGetMain.getExtras().containsKey("search_by_filter")) {
 
+            }
+        }
+
+        else if (intentGetMain.getExtras().containsKey("search_by_filter")) {
+            sqLiteHelper.open();
+            String[] filtersArr = intentGetMain.getStringArrayExtra("search_by_filter");
+            String selection = "";
+
+            if (filtersArr[0] != null) {
+                selection += SQLiteHelper.COLUMN_PLANT_TIME + " = '" + filtersArr[0] + "' AND ";
+            }
+            if (filtersArr[1] != null) {
+                selection += SQLiteHelper.COLUMN_PICK_TIME + " = '" + filtersArr[1] + "' AND ";
+            }
+            if (filtersArr[2] != null) {
+                selection += SQLiteHelper.COLUMN_DIFFICULT + " = '" + filtersArr[2] + "' AND ";
+            }
+            if (filtersArr[3] != null) {
+                selection += SQLiteHelper.COLUMN_HIGH + " >= " + filtersArr[3] + " AND ";
+            }
+            if (filtersArr[4] != null) {
+                selection += SQLiteHelper.COLUMN_HIGH + " <= " + filtersArr[4] + " AND ";
+            }
+            if (filtersArr[5] != null) {
+                selection += SQLiteHelper.COLUMN_WATER + " = '" + filtersArr[5] + "' AND ";
+            }
+            if (filtersArr[6] != null) {
+                selection += SQLiteHelper.COLUMN_LIGHT + " = '" + filtersArr[6] + "' AND ";
+            }
+
+// Remove the trailing " AND " if it exists
+            if (selection.endsWith(" AND ")) {
+                selection = selection.substring(0, selection.length() - 5); // Remove the last " AND "
+            }
+
+
+            plantsList = sqLiteHelper.getByFilter(selection);
+            sqLiteHelper.close();
+
+            if (plantsList.isEmpty()) {
+                Toast.makeText(this, "אין תוצאות", Toast.LENGTH_LONG).show();
+
+            } else {
+                lineDisplayAdapter = new LineDisplayAdapter(this, R.layout.custom_layout, plantsList);
+                LVplants.setAdapter(lineDisplayAdapter);
+
+            }
         }
 
     }
