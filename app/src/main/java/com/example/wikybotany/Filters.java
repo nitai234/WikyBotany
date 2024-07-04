@@ -6,10 +6,10 @@ public class Filters
     //1-= כלום
     private int plantTime; // 0= כל השנה, 1= סתיו, 2= חורף, 3= אביב, 4= קיץ,
     private int pickTime; //כנ"ל
-    private int difficult; // 1= קל, 2= בינוני, 3= קשה
+    private int difficult; // 0= קל, 1= בינוני, 2= קשה
     private int highMin;
     private int highMax;
-    private int water; // 1= קצת, 2= בינוני, 3= הרבה
+    private int water; // 0= קצת, 1= בינוני, 2= הרבה
     private int light; //כנ"ל
 
     public Filters(int plantTime, int pickTime, int difficult, int highMin, int highMax, int water, int light)
@@ -34,15 +34,6 @@ public class Filters
         this.light = -1;
     }
 
-    //פעולה שבודקת האם יש מסננים
-    public boolean isFilters()
-    {
-        if (((this.pickTime + this.plantTime + this.difficult  + this.water + this.light) != -5) && highMin + highMax != 0)
-        {
-            return true;
-        }
-        return false;
-    }
 
     //פיולה שמאפסת את המשתנים
     public void clean()

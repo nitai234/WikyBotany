@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
         <item
             android:id="@+id/information"
             android:icon="@android:drawable/star_big_on"
@@ -12,6 +11,5 @@
             android:id="@+id/improve"
             android:title="הגשת הצעה להוספה/ תיקון"
             />
-
 
 </menu>

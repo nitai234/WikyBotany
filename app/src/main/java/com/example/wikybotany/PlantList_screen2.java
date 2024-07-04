@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.wikybotany.link_list.LineDisplay;
 import com.example.wikybotany.link_list.LineDisplayAdapter;
 
 import java.util.ArrayList;

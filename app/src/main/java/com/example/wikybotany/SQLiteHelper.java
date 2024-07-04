@@ -70,10 +70,6 @@ public class SQLiteHelper extends SQLiteOpenHelper
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_PLANT);
         onCreate(database);
     }
-    public SQLiteDatabase getDatabase()
-    {
-        return database;
-    }
 
     //פעולה שפותחת קישור לדאטאבייס
     public void open()
@@ -173,8 +169,6 @@ public class SQLiteHelper extends SQLiteOpenHelper
 
         return  plantArrayList;
     }
-
-
 
 
 }

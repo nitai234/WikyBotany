@@ -36,7 +36,7 @@ public class DownloadJSON extends AsyncTask<String, Integer, ArrayList<Plant>>  
     protected void onPreExecute() {
         super.onPreExecute();
         // TODO Auto-generated method stub
-        p=ProgressDialog.show(context, "Upload JSON files","Loading please wait...",true);
+        p=ProgressDialog.show(context, "upload JSON files","Loading, pleas wait...",true);
         p.setCancelable(true);
         p.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         p.setMessage("Loading...");

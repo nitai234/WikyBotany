@@ -81,13 +81,4 @@ public class AppHelp {
 
         return StringfiltersArr;
     }
-
-
-
-
-
-
-
-
-
 }

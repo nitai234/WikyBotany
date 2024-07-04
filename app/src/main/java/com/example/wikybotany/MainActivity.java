@@ -32,7 +32,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements /*AdapterView.OnItemSelectedListener,*/ View.OnClickListener {
 
-    Button BTsearch, BTshowAll, BTlocation, BTfilter;
+    Button BTsearch, BTshowAll, BTfilter;
     EditText ETsearch;
     Dialog DIfilters, DIinformation, DIimprove, DInoWifi;
     Filters filters;
@@ -60,9 +60,6 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
 
 
 
-
-          //  AppHelp.arrayListToSQL(DownloadJSON.getJsondata(AppHelp.JSONhttp), this);
-
         intentToScreen2 = new Intent(this, PlantList_screen2.class);
 
         filters = new Filters();
@@ -79,9 +76,6 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         BTshowAll.setOnClickListener(this);
 
 
-
-
-     //   spinner.setAdapter(adapter);
     }
 
     // בדיקת חיבור לרשת
@@ -241,29 +235,6 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
             }
         });
 
-//        DIfilters.setOnCancelListener(new DialogInterface.OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialogInterface) {
-//                if (!ETDhighMin.getText().toString().equals(""))
-//                {
-//                    filters.setHighMin(Integer.parseInt(ETDhighMin.getText().toString()));
-//                }
-//                else if (ETDhighMin.getText().toString().equals(""))
-//                {
-//                    filters.setHighMin(0);
-//                }
-//                if (!ETDhighMax.getText().toString().equals(""))
-//                {
-//                    filters.setHighMax(Integer.parseInt(ETDhighMax.getText().toString()));
-//                }
-//                else if (ETDhighMax.getText().toString().equals(""))
-//                {
-//                    filters.setHighMax(0);
-//                }
-//
-//            }
-//        });
-
     }
 
     @Override
@@ -350,7 +321,7 @@ public class MainActivity extends AppCompatActivity implements /*AdapterView.OnI
         DInoWifi.setContentView(R.layout.dialog_no_internet);
         DInoWifi.setTitle("אין אינטרנט");
         DInoWifi.setCancelable(true);
-        Button BTDclose = findViewById(R.id.BTDclose);
+        Button BTDclose = DInoWifi.findViewById(R.id.BTDclose);
         DInoWifi.show();
         BTDclose.setOnClickListener(new View.OnClickListener() {
             @Override
